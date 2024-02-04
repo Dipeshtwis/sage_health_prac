@@ -1,6 +1,6 @@
-class CreatePersons < ActiveRecord::Migration[7.1]
+class CreatePeople < ActiveRecord::Migration[7.1]
   def change
-    create_table :persons do |t|
+    create_table :people do |t|
       t.string :first_name
       t.string :middle_name
       t.string :last_name
@@ -25,6 +25,6 @@ class CreatePersons < ActiveRecord::Migration[7.1]
       t.timestamps
     end
 
-    add_index :persons, :id, unique: true
+    add_index :people, :id, unique: true
   end
 end

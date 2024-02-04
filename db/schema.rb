@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_161328) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_04_191409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "persons", force: :cascade do |t|
+  create_table "people", force: :cascade do |t|
     t.string "first_name"
     t.string "middle_name"
     t.string "last_name"
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_161328) do
     t.string "email_comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["id"], name: "index_persons_on_id", unique: true
+    t.index ["id"], name: "index_people_on_id", unique: true
   end
 
   create_table "phone_numbers", force: :cascade do |t|
@@ -46,12 +46,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_04_161328) do
     t.string "language"
     t.string "comment"
     t.boolean "used_in_app"
-    t.bigint "persons_id", null: false
+    t.bigint "people_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["id"], name: "index_phone_numbers_on_id", unique: true
-    t.index ["persons_id"], name: "index_phone_numbers_on_persons_id"
+    t.index ["people_id"], name: "index_phone_numbers_on_people_id"
   end
 
-  add_foreign_key "phone_numbers", "persons", column: "persons_id"
+  add_foreign_key "phone_numbers", "people", column: "people_id"
 end
